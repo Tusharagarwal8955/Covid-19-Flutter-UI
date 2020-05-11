@@ -1,5 +1,4 @@
 import 'package:covid_19/constant.dart';
-import 'package:covid_19/info_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,7 +21,7 @@ class _MyHeaderState extends State<MyHeader> {
     return ClipPath(
       clipper: MyClipper(),
       child: Container(
-        padding: EdgeInsets.only(left: 40, top: 50, right: 20),
+        padding: EdgeInsets.only(left: 40, top: 80, right: 20),
         height: 350,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -41,20 +40,33 @@ class _MyHeaderState extends State<MyHeader> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return InfoScreen();
-                    },
-                  ),
-                );
-              },
-              child: SvgPicture.asset("assets/icons/menu.svg"),
-            ),
-            SizedBox(height: 20),
+//            GestureDetector(
+//                onTap: () {
+//                  Navigator.push(
+//                    context,
+//                    MaterialPageRoute(
+//                      builder: (context) {
+//                        return InfoScreen();
+//                      },
+//                    ),
+//                  );
+//                },
+//                child: Row(
+//                  mainAxisAlignment: MainAxisAlignment.end,
+//                  children: <Widget>[
+//                    Text(
+//                      'Info',
+//                      style: kSubTextStyle.copyWith(color: Colors.yellowAccent),
+//                    ),
+//                    SizedBox(width: 10),
+//                    Icon(
+//                      Icons.info,
+//                      color: Colors.white,
+//                      size: 35,
+//                    ),
+//                  ],
+//                )),
+//            SizedBox(height: 20),
             Expanded(
               child: Stack(
                 children: <Widget>[

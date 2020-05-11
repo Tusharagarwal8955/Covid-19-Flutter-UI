@@ -1,7 +1,8 @@
 import 'package:covid_19/constant.dart';
+import 'package:covid_19/main.dart';
 import 'package:covid_19/widgets/my_header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:bouncing_widget/bouncing_widget.dart';
 
 class InfoScreen extends StatefulWidget {
   @override
@@ -51,6 +52,36 @@ class _InfoScreenState extends State<InfoScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  Center(
+                    child: BouncingWidget(
+                      duration: Duration(milliseconds: 100),
+                      scaleFactor: 1.5,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return HomeScreen();
+                            },
+                          ),
+                        );
+                      },
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            color: Color(0xFF1E48B1)),
+                        child: Text(
+                          'See Cases In Your City',
+                          style: kTitleTextstyle.copyWith(
+                              color: Colors.white,
+                              decoration: TextDecoration.underline),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30),
                   Text(
                     "Symptoms",
                     style: kTitleTextstyle,
@@ -68,7 +99,7 @@ class _InfoScreenState extends State<InfoScreen> {
                         ),
                         SymptomCard(
                           image: "assets/images/caugh.png",
-                          title: "Caugh",
+                          title: "Cough",
                         ),
                         SymptomCard(
                           image: "assets/images/fever.png",
@@ -92,7 +123,12 @@ class _InfoScreenState extends State<InfoScreen> {
                     image: "assets/images/wash_hands.png",
                     title: "Wash your hands",
                   ),
-                  SizedBox(height: 50),
+                  PreventCard(
+                    text:
+                        "Maintain at least 1 metre (3 feet) distance between yourself and anyone who is coughing or sneezing.",
+                    image: "assets/images/social.png",
+                    title: "Keep Social Distance",
+                  ),
                 ],
               ),
             )
@@ -164,10 +200,6 @@ class PreventCard extends StatelessWidget {
                           fontSize: 12,
                         ),
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: SvgPicture.asset("assets/icons/forward.svg"),
                     ),
                   ],
                 ),
