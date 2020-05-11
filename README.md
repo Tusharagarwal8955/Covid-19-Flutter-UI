@@ -1,10 +1,14 @@
-# Covid-19 - Flutter UI
+# Covid-19 - Flutter Case Status District wise
 
-## [Watch it on YouTube](https://youtu.be/zx6uMCoW2gQ)
 
-**Packages we are using:**
+**Packages i am using:**
 
 - flutter_svg: [link](https://pub.dev/packages/flutter_svg)
+- http: [link](https://pub.dev/packages/http)
+- getflutter:[link](https://pub.dev/packages/getflutter)
+- modal_progress_hud: [link](https://pub.dev/packages/modal_progress_hud)
+- bouncing_widget: [link](https://pub.dev/packages/bouncing_widget)
+
 
 **Fonts**
 
@@ -13,9 +17,3 @@
 **UI Credit**
 
 - Design by: Rendi Ramadana [link](https://www.uplabs.com/posts/coronavirus-information-concept)
-
-### Covid-19 App Final UI
-
-![App UI](/covid_19.png)
-
-![Demo](https://user-images.githubusercontent.com/5730051/79185949-8acf3c80-7e42-11ea-984d-b098cfee5cd1.gif)
