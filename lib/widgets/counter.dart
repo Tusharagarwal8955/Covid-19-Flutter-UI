@@ -14,7 +14,8 @@ class Counter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Container(
           padding: EdgeInsets.all(6),
@@ -48,5 +49,3 @@ class Counter extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'widgets/counter.dart';
-import 'widgets/networking.dart';
+import 'networking.dart';
 import 'package:covid_19/constant.dart';
 import 'package:covid_19/widgets/counter.dart';
 import 'package:covid_19/widgets/my_header.dart';
@@ -62,7 +62,9 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       showSpinner = true;
     });
-    var ajmerData = await NetworkHelper().getData();
+    var ajmerData = await NetworkHelper(
+            'https://api.covid19india.org/state_district_wise.json')
+        .getData();
     setState(() {
       try {
         dataExist = true;
@@ -82,6 +84,14 @@ class _HomeScreenState extends State<HomeScreen> {
         confirmed = 0;
       }
     });
+    return;
+  }
+
+  void getCityName() async {
+    // var cityName = await NetworkHelper(
+    //     'https://api.covid19india.org/state_district_wise.json')
+    //     .getData();
+
     return;
   }
 
@@ -165,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 20),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                   padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -176,11 +186,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       SizedBox(width: 10),
                       SvgPicture.asset("assets/icons/maps-and-flags.svg"),
                       Expanded(
                         child: GFSearchBar(
+                          searchBoxInputDecoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(8),
+                            border: InputBorder.none,
+                            hintText: "Enter Your City Name",
+                          ),
                           searchList: getCity(slctedState),
                           searchQueryBuilder: (query, list) {
                             return list
@@ -237,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ],
                         ),
-                        child: Row(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Counter(

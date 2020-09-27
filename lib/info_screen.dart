@@ -3,6 +3,8 @@ import 'package:covid_19/main.dart';
 import 'package:covid_19/widgets/my_header.dart';
 import 'package:flutter/material.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
+import 'package:geocoder/geocoder.dart';
+import 'location.dart';
 
 class InfoScreen extends StatefulWidget {
   @override
@@ -56,15 +58,21 @@ class _InfoScreenState extends State<InfoScreen> {
                     child: BouncingWidget(
                       duration: Duration(milliseconds: 100),
                       scaleFactor: 1.5,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return HomeScreen();
-                            },
-                          ),
-                        );
+                      onPressed: () async {
+                        final coordinates = new Coordinates(1.10, 45.50);
+                        var addresses = await Geocoder.local
+                            .findAddressesFromCoordinates(coordinates);
+                        var first = addresses.first;
+                        print("${first.featureName} : ${first.addressLine}");
+                        Location().getCurrentLocation();
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) {
+                        //       return HomeScreen();
+                        //     },
+                        //   ),
+                        // );
                       },
                       child: Container(
                         padding:
