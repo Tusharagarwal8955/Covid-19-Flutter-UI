@@ -1,9 +1,8 @@
 import 'package:covid_19/constant.dart';
-import 'package:covid_19/main.dart';
+import 'city_detail_page.dart';
 import 'package:covid_19/widgets/my_header.dart';
 import 'package:flutter/material.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
-import 'package:geocoder/geocoder.dart';
 import 'location.dart';
 
 class InfoScreen extends StatefulWidget {
@@ -58,21 +57,16 @@ class _InfoScreenState extends State<InfoScreen> {
                     child: BouncingWidget(
                       duration: Duration(milliseconds: 100),
                       scaleFactor: 1.5,
-                      onPressed: () async {
-                        final coordinates = new Coordinates(1.10, 45.50);
-                        var addresses = await Geocoder.local
-                            .findAddressesFromCoordinates(coordinates);
-                        var first = addresses.first;
-                        print("${first.featureName} : ${first.addressLine}");
+                      onPressed: () {
                         Location().getCurrentLocation();
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) {
-                        //       return HomeScreen();
-                        //     },
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return HomeScreen();
+                            },
+                          ),
+                        );
                       },
                       child: Container(
                         padding:
@@ -134,7 +128,7 @@ class _InfoScreenState extends State<InfoScreen> {
                   PreventCard(
                     text:
                         "Maintain at least 1 metre (3 feet) distance between yourself and anyone who is coughing or sneezing.",
-                    image: "assets/images/social.png",
+                    image: "assets/images/wash_hands.png",
                     title: "Keep Social Distance",
                   ),
                 ],
