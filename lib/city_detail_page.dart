@@ -153,6 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           }).toList(),
                           onChanged: (value) {
                             setState(() {
+                              dataload = false;
                               slctedState = value;
                             });
                           },
