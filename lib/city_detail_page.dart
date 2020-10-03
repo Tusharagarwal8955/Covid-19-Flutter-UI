@@ -224,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: <Widget>[
                       Text(
                         dataExist
-                            ? "Case Update in $slctdDistrict, $locationState"
+                            ? "Case Update in $slctdDistrict, $slctedState"
                             : "Sorry!  Data Not Available for $slctdDistrict",
                         style: kTitleTextstyle.copyWith(
                             decoration: TextDecoration.underline),
